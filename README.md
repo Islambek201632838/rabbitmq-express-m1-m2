@@ -24,22 +24,22 @@ To get the project up and running on your local machine, follow these steps:
 bash
 ``npm install
 
-4. Running the Services
-# M1 Service (Task Provider)
+# Running the Services
+1. M1 Service (Task Provider)
 To start the M1 service, run:
   node provider.js or nodemon provider.js
 The service will listen on port 3000 by default. To post a task, send a JSON payload to http://localhost:3000/task with the following format:
   { "number": <your_number> }
-# M2 Service (Task Processor)
+2. M2 Service (Task Processor)
 To start the M2 service, which will process the tasks, run:
   node worker.js
 This service will consume messages from the 'tasks' queue, process them, and publish the results to the 'results' queue.
 
-5. Project Structure
+# Project Structure
 provider.js: Contains the M1 service code that sets up an Express server and RabbitMQ producer.
 worker.js: Contains the M2 service code that sets up a RabbitMQ consumer.
 
-6. Configuration
+# Configuration
 To modify the RabbitMQ connection or queue names, adjust the following variables in both provider.js and worker.js:
 
 const rabbitMqUrl = 'amqp://localhost:5672';
